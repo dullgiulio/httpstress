@@ -3,6 +3,7 @@ It launches one goroutine per concurrent connection.
 
 A CLI utility is avaliable at github.com/chillum/httpstress-go */
 package httpstress
+
 /* Copyright 2014 Chai Chillum
 
 Licensed under the Apache License, Version 2.0 (the "License");
