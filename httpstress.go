@@ -39,12 +39,13 @@ func Test(conn int, max int, urls []string) (results map[string]int, err error) 
 	failures := make(chan string)
 	finished := make(chan bool)
 	total := len(urls) - 1
+	client := &http.Client{}
 	n := 0
 	i := 0
 
 	go logger(failures, results)
 	for ; i < conn; i++ { // Launch initial workers.
-		go worker(urls[n], failures, finished)
+		go worker(urls[n], failures, finished, client)
 
 		if n < total {
 			n++
@@ -54,7 +55,7 @@ func Test(conn int, max int, urls []string) (results map[string]int, err error) 
 	}
 	for ; i < max; i++ { // Launch more workers as initial finish.
 		if <-finished {
-			go worker(urls[n], failures, finished)
+			go worker(urls[n], failures, finished, client)
 
 			if n < total {
 				n++
@@ -78,8 +79,8 @@ func logger(failures <-chan string, results map[string]int) {
 	}
 }
 
-func worker(url string, failures chan<- string, finished chan<- bool) {
-	resp, err := http.Get(url)
+func worker(url string, failures chan<- string, finished chan<- bool, client *http.Client) {
+	resp, err := client.Get(url)
 	if err != nil {
 		failures <- url
 	}
