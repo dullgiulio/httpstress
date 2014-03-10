@@ -40,7 +40,7 @@ func Test(conn int, max int, urls []string) (results map[string]int, err error) 
 	failures := make(chan string)
 	finished := make(chan bool)
 	total := len(urls) - 1
-	trans := &http.Transport{MaxIdleConnsPerHost: conn} // Persistent connections.
+	trans := &http.Transport{MaxIdleConnsPerHost: conn} // Use persistent connections.
 	client := &http.Client{Transport: trans}
 	n := 0
 	i := 0
