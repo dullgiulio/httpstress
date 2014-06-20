@@ -21,7 +21,7 @@ limitations under the License. */
 import (
 	"errors"
 	"net/http"
-	. "regexp"
+	"regexp"
 )
 
 /* httpstress.Test launches {conn} goroutines to fetch HTTP locations in {urls} list.
@@ -30,7 +30,7 @@ resulting in {max} queries (but no more than {conn} in every moment).
 Returns map: {url}/{failed} or error (failed URL message). */
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
-		if m, _ := MatchString("^http://", i); !m {
+		if m, _ := regexp.MatchString("^http://", i); !m {
 			err = errors.New("Not a HTTP URL: " + i)
 			return
 		}
