@@ -7,7 +7,8 @@ If you need a CLI utility, install [httpstress-go](https://github.com/chillum/ht
 not httpstress.
 
 ### Installation
-* Install [Go runtime](http://golang.org/doc/install)
+* Install [Go runtime](http://golang.org/doc/install).
+  Go 1.3 or higher is recommended because of performance improvements
 * Set [`GOPATH`](http://golang.org/doc/code.html#GOPATH)
 * `go get github.com/chillum/httpstress`
 
