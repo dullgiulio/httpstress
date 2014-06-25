@@ -24,6 +24,9 @@ import (
 	"regexp"
 )
 
+// Library version
+const Version = "1.0.3"
+
 /* httpstress.Test launches {conn} goroutines to fetch HTTP locations in {urls} list.
 If {max} is more than {conn}, more goroutines will spawn as other are finished,
 resulting in {max} queries (but no more than {conn} in every moment).
