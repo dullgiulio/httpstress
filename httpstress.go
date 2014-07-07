@@ -51,7 +51,7 @@ Returns map: {url}/{failed} or error (failed URL message). Example:
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
 		if m, _ := regexp.MatchString("^https?://", i); !m {
-			err = errors.New("Not a HTTPS? URL: " + i)
+			err = errors.New("Not a HTTP/HTTPS URL: " + i)
 			return
 		}
 	}
