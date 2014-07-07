@@ -20,10 +20,10 @@ import "testing"
 func TestTest(t *testing.T) {
 	up := []string{"https://google.com", "http://google.com"} // These URLs should pass.
 	down := []string{"http://test.invalid"}                   // This should fail.
-	error := []string{"ftp://localhost"}                      // Error. Non HTTP/HTTPS URL.
+	invalid := []string{"ftp://localhost"}                    // Error. Non HTTP/HTTPS URL.
 
-	if _, err := Test(1, 1, error); err == nil {
-		t.Errorf("%s is ok (should be an error)", error)
+	if _, err := Test(1, 1, invalid); err == nil {
+		t.Errorf("%s is ok (should be an error)", invalid)
 	}
 
 	if err, _ := Test(1, 1, up); len(err) > 0 {
