@@ -20,7 +20,7 @@ import "testing"
 func TestTest(t *testing.T) {
 	up := make([]string, 2)
 	up[0] = "https://google.com"    // These URLs should pass.
-	up[0] = "http://google.com"
+	up[1] = "http://google.com"
 	down := make([]string, 1)
 	down[0] = "http://test.invalid" // This should fail.
 	error := make([]string, 1)

@@ -30,7 +30,23 @@ const Version = "1.1"
 /* httpstress.Test launches {conn} goroutines to fetch HTTP/HTTPS locations in {urls} list.
 If {max} is more than {conn}, more goroutines will spawn as other are finished,
 resulting in {max} queries (but no more than {conn} in every moment).
-Returns map: {url}/{failed} or error (failed URL message). */
+Returns map: {url}/{failed} or error (failed URL message). Example:
+
+	url := make([]string, 2)
+	url[0] = "https://google.com"
+	url[1] = "http://localhost"
+
+	out, err := httpstress.Test(1, 1, url)
+
+	if err != nil {
+		// Invalid arguments
+	} else {
+		if len(out) == 0 {
+			// No failed requests.
+		} else {
+			// Failed requests.
+		}
+	} */
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
 		if m, _ := regexp.MatchString("^https?://", i); !m {
