@@ -45,6 +45,9 @@ Returns map: {url}/{failed} or error (failed URL message). Example:
 			// No failed requests.
 		} else {
 			// Failed requests.
+			for url, num := range out {
+				fmt.Println(url, "failed", num, "times.")
+			}
 		}
 	} */
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
