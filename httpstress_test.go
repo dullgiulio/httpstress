@@ -18,13 +18,9 @@ limitations under the License. */
 import "testing"
 
 func TestTest(t *testing.T) {
-	up := make([]string, 2)
-	up[0] = "https://google.com"    // These URLs should pass.
-	up[1] = "http://google.com"
-	down := make([]string, 1)
-	down[0] = "http://test.invalid" // This should fail.
-	error := make([]string, 1)
-	error[0] = "ftp://localhost"    // Error. Non HTTP/HTTPS URL.
+	up := []string{"https://google.com", "http://google.com"} // These URLs should pass.
+	down := []string{"http://test.invalid"}                   // This should fail.
+	error := []string{"ftp://localhost"}                      // Error. Non HTTP/HTTPS URL.
 
 	if _, err := Test(1, 1, error); err == nil {
 		t.Errorf("%s is ok (should be an error)", error)
