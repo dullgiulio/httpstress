@@ -36,7 +36,7 @@ Returns map: {url}/{failed} or error (failed URL message). Example:
 	url[0] = "https://google.com"
 	url[1] = "http://localhost"
 
-	out, err := httpstress.Test(1, 1, url)
+	out, err := httpstress.Test(2, 4, url) // Makes 4 HTTP requests total, 2 concurrent.
 
 	if err != nil {
 		// Invalid arguments
@@ -53,7 +53,7 @@ Returns map: {url}/{failed} or error (failed URL message). Example:
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
 		if m, _ := regexp.MatchString("^https?://", i); !m {
-			err = errors.New("Not a HTTP/HTTPS URL: " + i)
+			err = errors.New("Not a HTTPS? URL: " + i)
 			return
 		}
 	}
