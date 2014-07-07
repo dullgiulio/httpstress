@@ -32,9 +32,9 @@ If {max} is more than {conn}, more goroutines will spawn as other are finished,
 resulting in {max} queries (but no more than {conn} in every moment).
 Returns map: {url}/{failed} or error (failed URL message). Example:
 
-	url := []string{"https://google.com", "http://localhost"}
+	urls := []string{"https://google.com", "http://localhost"}
 
-	out, err := httpstress.Test(2, 4, url) // Makes 4 HTTP requests total, 2 concurrent.
+	out, err := httpstress.Test(2, 4, urls) // Makes 4 HTTP requests total, 2 concurrent.
 
 	if err != nil {
 		// Invalid arguments
@@ -44,7 +44,7 @@ Returns map: {url}/{failed} or error (failed URL message). Example:
 		} else {
 			// Process failed requests.
 			for url, num := range out {
-				fmt.Println(url, "failed", num, "times.")
+				log.Println(url, "failed", num, "times.")
 			}
 		}
 	} */
