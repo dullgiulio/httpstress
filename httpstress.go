@@ -25,16 +25,16 @@ import (
 )
 
 // Library version
-const Version = "1.0.3"
+const Version = "1.1"
 
-/* httpstress.Test launches {conn} goroutines to fetch HTTP locations in {urls} list.
+/* httpstress.Test launches {conn} goroutines to fetch HTTP/HTTPS locations in {urls} list.
 If {max} is more than {conn}, more goroutines will spawn as other are finished,
 resulting in {max} queries (but no more than {conn} in every moment).
 Returns map: {url}/{failed} or error (failed URL message). */
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
-		if m, _ := regexp.MatchString("^http://", i); !m {
-			err = errors.New("Not a HTTP URL: " + i)
+		if m, _ := regexp.MatchString("^https?://", i); !m {
+			err = errors.New("Not a HTTP/HTTPS URL: " + i)
 			return
 		}
 	}
