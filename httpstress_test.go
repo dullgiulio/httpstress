@@ -1,4 +1,4 @@
-/* Test the httpstress.Test() function. */
+// Test the httpstress.Test() function.
 package httpstress
 
 import "testing"
