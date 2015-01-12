@@ -53,6 +53,7 @@ func Test(conn int, max int, urls []string) (results map[string]int, err error) 
 	n := 0
 	i := 0
 
+	// Ensure, every URL gets a request.
 	if max < len(urls) {
 		max = len(urls)
 	}
