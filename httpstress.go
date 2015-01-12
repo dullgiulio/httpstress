@@ -12,7 +12,7 @@ import (
 )
 
 // Library version
-const Version = "1.1"
+const Version = "1.2"
 
 /* httpstress.Test launches {conn} goroutines to fetch HTTP/HTTPS locations in {urls} list
 
@@ -52,6 +52,10 @@ func Test(conn int, max int, urls []string) (results map[string]int, err error) 
 	client := &http.Client{Transport: trans}
 	n := 0
 	i := 0
+
+	if max < len(urls) {
+		max = len(urls)
+	}
 
 	go logger(failures, results)
 	for ; i < conn; i++ { // Launch initial workers.
