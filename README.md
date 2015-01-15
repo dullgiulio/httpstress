@@ -1,7 +1,6 @@
 ## httpstress  [![Build Status](https://travis-ci.org/chillum/httpstress.svg?branch=master)](https://travis-ci.org/chillum/httpstress)
 
-httpstress is a Go library for HTTP stress testing.
-It launches one goroutine per concurrent connection.
+Go library for HTTP stress testing. It launches one goroutine per concurrent connection.
 
 A CLI is provided in [httpstress-go repo](https://github.com/chillum/httpstress-go.git).
 If you need a CLI utility, install [httpstress-go](https://github.com/chillum/httpstress-go.git),
