@@ -1,8 +1,10 @@
-/* httpstress is a library for HTTP stress testing
+/*
+Package httpstress is a library for HTTP stress testing
 
 It launches one goroutine per concurrent connection and does not count successful attempts.
 
-A CLI utility is avaliable at github.com/chillum/httpstress-go */
+A CLI utility is avaliable at github.com/chillum/httpstress-go
+*/
 package httpstress
 
 import (
@@ -14,7 +16,8 @@ import (
 // Library version
 const Version = "1.2"
 
-/* httpstress.Test launches {conn} goroutines to fetch HTTP/HTTPS locations in {urls} list
+/*
+Test launches {conn} goroutines to fetch HTTP/HTTPS locations in {urls} list
 
 If {max} is more than {conn}, more goroutines will spawn as other are finished,
 resulting in {max} queries (but no more than {conn} in every moment).
@@ -35,7 +38,8 @@ Returns map: {url}, {fail count} or error (failed URL message). Example:
 				log.Println(url, "failed", num, "times.")
 			}
 		}
-	} */
+	}
+*/
 func Test(conn int, max int, urls []string) (results map[string]int, err error) {
 	for _, i := range urls {
 		if m, _ := regexp.MatchString("^https?://", i); !m {
